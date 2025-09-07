@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Köseler Pasaport Pizza - Menü</title>
+    <title>Köseler Köyü Pasaport Pizza - Menü</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -11,27 +11,29 @@
             --secondary-color: #f8f9fa;
             --text-color: #333;
             --light-text: white;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --header-bg: white;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
+            --border-radius: 12px;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
             color: var(--text-color);
             line-height: 1.6;
         }
 
         /* Header Styles */
         header {
-            background-color: var(--primary-color);
-            color: var(--light-text);
+            background-color: var(--header-bg);
+            color: var(--text-color);
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
@@ -60,6 +62,7 @@
         .logo-text {
             font-size: 1.8rem;
             font-weight: bold;
+            color: var(--primary-color);
         }
 
         nav ul {
@@ -72,14 +75,17 @@
         }
 
         nav ul li a {
-            color: var(--light-text);
+            color: var(--text-color);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
+            padding: 8px 15px;
+            border-radius: 30px;
         }
 
-        nav ul li a:hover {
-            color: #ffcc00;
+        nav ul li a:hover, nav ul li a.active {
+            background-color: var(--primary-color);
+            color: white;
         }
 
         .mobile-menu-btn {
@@ -87,7 +93,7 @@
             font-size: 1.5rem;
             background: none;
             border: none;
-            color: var(--light-text);
+            color: var(--text-color);
             cursor: pointer;
         }
 
@@ -102,9 +108,10 @@
             text-align: center;
             margin-bottom: 2rem;
             color: var(--primary-color);
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            font-weight: 700;
         }
 
         .section-title::after {
@@ -113,9 +120,10 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
+            width: 80px;
+            height: 4px;
             background-color: var(--primary-color);
+            border-radius: 2px;
         }
 
         /* Category Filter */
@@ -128,7 +136,7 @@
         }
 
         .filter-btn {
-            padding: 8px 20px;
+            padding: 10px 25px;
             background-color: white;
             border: 2px solid var(--primary-color);
             border-radius: 30px;
@@ -141,6 +149,8 @@
         .filter-btn:hover, .filter-btn.active {
             background-color: var(--primary-color);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(236, 28, 36, 0.3);
         }
 
         /* Products Grid */
@@ -152,22 +162,38 @@
 
         .product-card {
             background-color: white;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             cursor: pointer;
+            position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
         }
 
         .product-image {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
         }
 
         .product-info {
@@ -178,6 +204,7 @@
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: var(--primary-color);
+            font-weight: 700;
         }
 
         .product-description {
@@ -192,15 +219,15 @@
             display: flex;
             justify-content: space-between;
             margin-top: 10px;
+            gap: 5px;
         }
 
         .size-option {
             text-align: center;
             flex: 1;
-            padding: 5px;
-            border-radius: 5px;
-            background-color: #f0f0f0;
-            margin: 0 2px;
+            padding: 8px 5px;
+            border-radius: 8px;
+            background-color: #f8f8f8;
             font-size: 0.8rem;
         }
 
@@ -210,6 +237,14 @@
             color: var(--primary-color);
         }
 
+        .single-price {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
         /* Modal Styles */
         .modal-overlay {
             position: fixed;
@@ -217,7 +252,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -225,6 +260,7 @@
             opacity: 0;
             visibility: hidden;
             transition: var(--transition);
+            padding: 15px;
         }
 
         .modal-overlay.active {
@@ -235,36 +271,54 @@
         .product-modal {
             background-color: white;
             width: 90%;
-            max-width: 800px;
-            border-radius: 10px;
+            max-width: 900px;
+            border-radius: var(--border-radius);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             max-height: 90vh;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 992px) {
             .product-modal {
                 flex-direction: row;
             }
         }
 
-        .modal-image {
+        .modal-image-container {
             width: 100%;
             height: 300px;
-            object-fit: cover;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
         }
 
-        @media (min-width: 768px) {
-            .modal-image {
-                width: 40%;
+        @media (min-width: 992px) {
+            .modal-image-container {
+                width: 45%;
                 height: auto;
             }
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .modal-content {
             padding: 2rem;
             overflow-y: auto;
+            width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            .modal-content {
+                width: 55%;
+            }
         }
 
         .modal-close {
@@ -273,25 +327,34 @@
             right: 15px;
             background-color: var(--primary-color);
             color: white;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+            background-color: #d01623;
         }
 
         .modal-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .modal-description {
             margin-bottom: 1.5rem;
             line-height: 1.8;
+            font-size: 1.1rem;
         }
 
         .modal-sizes {
@@ -303,39 +366,104 @@
 
         @media (min-width: 480px) {
             .modal-sizes {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         .modal-size {
             text-align: center;
-            padding: 1rem;
+            padding: 1.2rem;
             border: 2px solid #f0f0f0;
-            border-radius: 8px;
+            border-radius: var(--border-radius);
             transition: var(--transition);
         }
 
         .modal-size:hover {
             border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .size-name {
             font-weight: bold;
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
         .size-price {
             color: var(--primary-color);
             font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* Side Products Section */
+        .side-products, .drinks-content, .sauces-content {
+            display: none;
+        }
+
+        .side-products.active, .drinks-content.active, .sauces-content.active {
+            display: block;
+        }
+
+        .side-product-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .side-product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .side-product-image-container {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+
+        .side-product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .side-product-card:hover .side-product-image {
+            transform: scale(1.05);
+        }
+
+        .side-product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .side-product-title {
             font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .side-product-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
 
         /* Footer Styles */
         footer {
             background-color: #333;
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0 2rem;
             text-align: center;
+            margin-top: 4rem;
         }
 
         .footer-content {
@@ -348,25 +476,32 @@
             margin-bottom: 1.5rem;
         }
 
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
         .social-icons a {
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             transition: var(--transition);
         }
 
         .social-icons a:hover {
             color: var(--primary-color);
+            transform: translateY(-5px);
         }
 
         /* Responsive Styles */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .header-container {
                 flex-direction: column;
                 text-align: center;
@@ -396,6 +531,25 @@
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
+
+            .modal-sizes {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .product-sizes {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .size-option {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -412,14 +566,18 @@
             </button>
             <nav>
                 <ul>
-                    <li><a href="#pizzalar">Pizzalar</a></li>
+                    <li><a href="#pizzalar" class="nav-link active" data-target="pizzas">Pizzalar</a></li>
+                    <li><a href="#yan-urunler" class="nav-link" data-target="sides">Yan Ürünler</a></li>
+                    <li><a href="#icecekler" class="nav-link" data-target="drinks">İçecekler</a></li>
+                    <li><a href="#soslar" class="nav-link" data-target="sauces">Soslar</a></li>
+                    <li><a href="#iletisim">İletişim</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="container">
+    <!-- Main Content - Pizzas -->
+    <div class="container pizzas-content">
         <h2 class="section-title" id="pizzalar">Pizzalar</h2>
         
         <!-- Category Filter -->
@@ -437,13 +595,45 @@
         </div>
     </div>
 
+    <!-- Main Content - Side Products -->
+    <div class="container side-products" id="yan-urunler">
+        <h2 class="section-title">Yan Ürünler</h2>
+        
+        <!-- Side Products Grid -->
+        <div class="products-grid" id="side-products-container">
+            <!-- Side products will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Main Content - Drinks -->
+    <div class="container drinks-content" id="icecekler">
+        <h2 class="section-title">İçecekler</h2>
+        
+        <!-- Drinks Grid -->
+        <div class="products-grid" id="drinks-container">
+            <!-- Drinks will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- Main Content - Sauces -->
+    <div class="container sauces-content" id="soslar">
+        <h2 class="section-title">Soslar</h2>
+        
+        <!-- Sauces Grid -->
+        <div class="products-grid" id="sauces-container">
+            <!-- Sauces will be dynamically inserted here -->
+        </div>
+    </div>
+
     <!-- Product Modal -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="product-modal">
             <div class="modal-close" id="modal-close">
                 <i class="fas fa-times"></i>
             </div>
-            <img src="" alt="Product Image" class="modal-image" id="modal-image">
+            <div class="modal-image-container">
+                <img src="" alt="Product Image" class="modal-image" id="modal-image">
+            </div>
             <div class="modal-content">
                 <h2 class="modal-title" id="modal-title"></h2>
                 <p class="modal-description" id="modal-description"></p>
@@ -474,7 +664,7 @@
     </footer>
 
     <script>
-        // Sample product data - You can easily add more products here
+        // Pizza product data
         const products = [
             {
                 id: 1,
@@ -483,9 +673,8 @@
                 image: "https://www.pasaportpizza.com/images/products/0b2a4680e6d484ab5bf6bd28b5831a70.png",
                 category: "ozel",
                 sizes: [
-                    { name: "Küçük", price: "85₺" },
-                    { name: "Orta", price: "120₺" },
-                    { name: "Büyük", price: "155₺" },
+                    { name: "Orta", price: "229,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
             {
@@ -495,9 +684,8 @@
                 image: "https://www.pasaportpizza.com/images/products/5fa6a11f7accb1c52e63e0f7b210a600.png",
                 category: "ozel",
                 sizes: [
-                    { name: "Küçük", price: "80₺" },
-                    { name: "Orta", price: "115₺" },
-                    { name: "Büyük", price: "150₺" },
+                    { name: "Orta", price: "229,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
             {
@@ -507,9 +695,8 @@
                 image: "https://www.pasaportpizza.com/images/products/aedd7977b614aec6e02f2b36d265cc83.png",
                 category: "ozel",
                 sizes: [
-                    { name: "Küçük", price: "75₺" },
-                    { name: "Orta", price: "110₺" },
-                    { name: "Büyük", price: "145₺" },
+                    { name: "Orta", price: "229,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
             {
@@ -519,9 +706,8 @@
                 image: "https://www.pasaportpizza.com/images/products/d0a3e15acb77a02ea87c243a30480fc0.png",
                 category: "ozel",
                 sizes: [
-                    { name: "Küçük", price: "90₺" },
-                    { name: "Orta", price: "125₺" },
-                    { name: "Büyük", price: "160₺" },
+                    { name: "Orta", price: "229,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
             {
@@ -531,9 +717,8 @@
                 image: "https://www.pasaportpizza.com/images/products/b9d8f86073f1d130a2de09db2612b4e2.png",
                 category: "ozel",
                 sizes: [
-                    { name: "Küçük", price: "95₺" },
-                    { name: "Orta", price: "130₺" },
-                    { name: "Büyük", price: "165₺" },
+                    { name: "Orta", price: "229,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
             {
@@ -543,21 +728,19 @@
                 image: "https://www.pasaportpizza.com/images/products/5802fbc581e834ca847ecb444c7da06c.png",
                 category: "klasik",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "229,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
-	    {
+            {
                 id: 7,
                 name: "SPECIAL",
                 description: "Özel pizza sosu, pizza peyniri, sucuk, salam, sosis, mantar, mısır, siyah zeytin",
                 image: "https://www.pasaportpizza.com/images/products/1069408951f414c02fb1f2dcf31a7280.png",
                 category: "klasik",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "249,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
             {
@@ -567,21 +750,19 @@
                 image: "https://www.pasaportpizza.com/images/products/85bab97669e3a429515d7f16f3ce21d8.png",
                 category: "klasik",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "229,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
             {
                 id: 9,
-                name: "MANTARLI SOSİSLİ",
+                name: "MANTarLI SOSİSLİ",
                 description: "Özel pizza sosu, pizza peyniri, sosis, mantar",
                 image: "https://www.pasaportpizza.com/images/products/30a577126ed0614160b9717045d99b70.png",
                 category: "klasik",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "229,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
             {
@@ -591,9 +772,8 @@
                 image: "https://www.pasaportpizza.com/images/products/88f8024ece565c06fa3d06eccb3bd05f.png",
                 category: "klasik",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "249,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
             {
@@ -603,9 +783,8 @@
                 image: "https://www.pasaportpizza.com/images/products/6f268839988c5be570aaff8a4c33ede6.png",
                 category: "klasik",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "229,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
             {
@@ -615,9 +794,8 @@
                 image: "https://www.pasaportpizza.com/images/products/ba9ea58b9fd2575eb667350649705b53.png",
                 category: "klasik",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "229,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
             {
@@ -627,21 +805,19 @@
                 image: "https://www.pasaportpizza.com/images/products/3dd4087b33df45a51d91a33cbbc8d830.png",
                 category: "klasik",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "229,90₺" },
+                    { name: "Büyük", price: "329,90₺" }
                 ]
             },
-	    {
+            {
                 id: 14,
                 name: "4 PEYNİRLİ",
                 description: "Özel pizza sosu, mozzarella peyniri, beyaz peynir, tulum peyniri, cheddar peyniri",
                 image: "https://www.pasaportpizza.com/images/products/d745e2866be87ec617b5db414b043f24.png",
                 category: "etli",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "329,90₺" },
+                    { name: "Büyük", price: "499,90₺" }
                 ]
             },
             {
@@ -651,9 +827,8 @@
                 image: "https://www.pasaportpizza.com/images/products/76f3a5f103077e168e052b6afd753905.png",
                 category: "etli",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "329,90₺" },
+                    { name: "Büyük", price: "499,90₺" }
                 ]
             },
             {
@@ -663,9 +838,8 @@
                 image: "https://www.pasaportpizza.com/images/products/1019541394e430d965803c49f214c3c6.png",
                 category: "etli",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "329,90₺" },
+                    { name: "Büyük", price: "499,90₺" }
                 ]
             },
             {
@@ -675,9 +849,8 @@
                 image: "https://www.pasaportpizza.com/images/products/7d034de4934d2799834539e13f9b9c1b.png",
                 category: "etli",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "379,90₺" },
+                    { name: "Büyük", price: "499,90₺" }
                 ]
             },
             {
@@ -687,9 +860,8 @@
                 image: "https://www.pasaportpizza.com/images/products/55c38f3ed9c0399cadf5d8ad1a7c8d6f.png",
                 category: "etli",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "329,90₺" },
+                    { name: "Büyük", price: "499,90₺" }
                 ]
             },
             {
@@ -699,9 +871,8 @@
                 image: "https://www.pasaportpizza.com/images/products/74dd9d67060ec1c661dc4ad9dc37ecb5.png",
                 category: "vejeteryan",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "349,90₺" },
+                    { name: "Büyük", price: "599,90₺" }
                 ]
             },
             {
@@ -711,9 +882,8 @@
                 image: "https://www.pasaportpizza.com/images/products/4ef5a3c1c5bb1fb56781de8029b391a0.png",
                 category: "vejeteryan",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "349,90₺" },
+                    { name: "Büyük", price: "599,90₺" }
                 ]
             },
             {
@@ -723,9 +893,8 @@
                 image: "https://www.pasaportpizza.com/images/products/6fc00b6986b51204eeeee8c0675f0cc3.png",
                 category: "vejeteryan",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "349,90₺" },
+                    { name: "Büyük", price: "599,90₺" }
                 ]
             },
             {
@@ -735,15 +904,301 @@
                 image: "https://www.pasaportpizza.com/images/products/0f8374692ca8092883fa07a465d88b94.png",
                 category: "vejeteryan",
                 sizes: [
-                    { name: "Küçük", price: "70₺" },
-                    { name: "Orta", price: "105₺" },
-                    { name: "Büyük", price: "140₺" },
+                    { name: "Orta", price: "349,90₺" },
+                    { name: "Büyük", price: "599,90₺" }
+                ]
+            }
+        ];
+
+        // Side products data with quantity options
+        const sideProducts = [
+            {
+                id: 1,
+                name: "Patates Kızartması",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/8193de8515c2281fab680102a6e1b900.png",
+                price: "99.90₺",
+                hasQuantity: false
+            },
+            {
+                id: 2,
+                name: "Pop-Up Chicken",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751355044708_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "10 Adet", price: "94,90₺" },
+                    { name: "20 Adet", price: "129,90₺" }
                 ]
             },
+            {
+                id: 3,
+                name: "Çıtır Finger",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751356699803_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "3 Adet", price: "99,90₺" },
+                    { name: "6 Adet", price: "149,90₺" }
+                ]
+            },
+            {
+                id: 4,
+                name: "Soğan Halkası",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751354960514_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "6 Adet", price: "79,90₺" },
+                    { name: "12 Adet", price: "129,90₺" }
+                ]
+            },
+	    {
+                id: 5,
+                name: "Çıtır Wings ( Yaprak Kanat )",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751356312021_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "3 Adet", price: "169,90₺" },
+                    { name: "6 Adet", price: "269,90₺" }
+                ]
+            },
+            {
+                id: 6,
+                name: "Çıtır Wings ( Kök Kanat )",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751356596063_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "3 Adet", price: "199,90₺" },
+                    { name: "6 Adet", price: "299,90₺" }
+                ]
+            },
+            {
+                id: 7,
+                name: "Elma Dilim Patates",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751354896008_500x375.webp",
+                price: "99,90₺",
+                hasQuantity: false
+            },
+            {
+                id: 8,
+                name: "Küp Tenders",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751356082295_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "6 Adet", price: "129,90₺" },
+                    { name: "12 Adet", price: "199,90₺" }
+                ]
+            },     
+            {
+                id: 9,
+                name: "Chicken Tenders",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751355478046_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "3 Adet", price: "129,90₺" },
+                    { name: "6 Adet", price: "199,90₺" }
+                ]
+            },
+            {
+                id: 10,
+                name: "Nugget",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/4026683fe8ae154767b454f1395b2c50.png",
+                hasQuantity: true,
+                quantities: [
+                    { name: "6 Adet", price: "104,90₺" },
+                    { name: "12 Adet", price: "134,90₺" }
+                ]
+            }
+        ];
+
+        // Drinks data
+        const drinks = [
+            {
+                id: 1,
+                name: "Coca Cola Kutu",
+                description: "Soğuk içecek",
+                image: "https://www.pasaportpizza.com/images/products/74548ea381865e14e451603cd981a051.png",
+                price: "84,90₺"
+            },
+            {
+                id: 2,
+                name: "Fanta Kutu",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/7f26295a44ba3bdad290d832b3369797.png",
+                price: "84,90₺"
+            },
+            {
+                id: 3,
+                name: "Sprite Kutu",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/f3ae6a7d2efc3bf64ba0855b19eec51b.png",
+                price: "84,90₺"
+            },
+            {
+                id: 4,
+                name: "Coca Cola Kutu ( Şekersiz )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/d6d7f9402451f1441a384af560865946.png",
+                price: "84,90₺"
+            },
+            {
+                id: 5,
+                name: "Su ( 0,5 LT )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/82e91b8498c0dc8c8fb3adee50aea92e.png",
+                price: "29,90₺"
+            },
+            {
+                id: 6,
+                name: "Cappy Kutu ( 250 Ml )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/77aa30a180c2649b54f316cb36ec7c7c.png",
+                price: "84,90₺"
+            },
+	    {
+                id: 7,
+                name: "Ayran Kutu",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/c1b3c24dbf65cd039f5a8c064c668d41.png",
+                price: "69,90₺"
+            },
+            {
+                id: 8,
+                name: "Fuse Tea Kutu",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/1cb2220e0d4d393649a5734d9a4ee112.png",
+                price: "84,90₺"
+            },
+            {
+                id: 9,
+                name: "Soda",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/8316bdc92ccece0eb3f4eb6db5dfdb6f.png",
+                price: "34,90₺"
+            },
+            {
+                id: 10,
+                name: "Coca Cola ( 1 LT )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/7ee062e88fc64005bac1fc8959b05958.png",
+                price: "94,90₺"
+            },
+            {
+                id: 11,
+                name: "Coca Cola Şekersiz ( 1 LT )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/162b3e53ba284efea15f2cff859a1c47.png",
+                price: "94,90₺"
+            },
+            {
+                id: 12,
+                name: "Sprite ( 1 LT )",
+                description: "Serinletici ayran",
+                image: "https://www.pasaportpizza.com/images/products/f9fb2c1e816fb946bdffed634cd71314.png",
+                price: "94,90₺"
+            },
+            {
+                id: 13,
+                name: "Fanta ( 1 LT )",
+                description: "Serinletici ayran",
+                image: "https://www.pasaportpizza.com/images/products/4d7d4b90b82d30681b82bada664e4887.png",
+                price: "94,90₺"
+            },
+            {
+                id: 14,
+                name: "Fuse Tea ( 1 LT )",
+                description: "Serinletici ayran",
+                image: "https://www.pasaportpizza.com/images/products/015a9247f649bb25dd5a16c5a633aabe.png",
+                price: "94,90₺"
+            },
+            {
+                id: 15,
+                name: "Ayran ( 1 LT )",
+                description: "Serinletici ayran",
+                image: "https://www.pasaportpizza.com/images/products/eb1f960fdae5ecafb4ee0d3a4e0f473b.png",
+                price: "89,90₺"
+            }     
+        ];
+
+        // Sauces data
+        const sauces = [
+            {
+                id: 1,
+                name: "Ekstra Ketçap",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1733903244399_500x375.jpeg",
+                price: "3,90₺"
+            },
+            {
+                id: 2,
+                name: "Ekstra Mayonez",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751353446019_500x375.webp",
+                price: "3,90₺"
+            },
+            {
+                id: 3,
+                name: "Barbekü Sos",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1733903213957_500x375.jpeg",
+                price: "12,90₺"
+            },
+            {
+                id: 4,
+                name: "Ranch Sos",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1733903271784_500x375.jpeg",
+                price: "12,90₺"
+            },
+            {
+                id: 5,
+                name: "Acı Sos",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1733903198975_500x375.jpeg",
+                price: "12,90₺"
+            },
+            {
+                id: 6,
+                name: "Sarımsaklı Mayonez",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1733903284709_500x375.jpeg",
+                price: "12,90₺"
+            },
+            {
+                id: 7,
+                name: "Buffalo Sos",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1743082286006_500x375.webp",
+                price: "19,90₺"
+            },
+            {
+                id: 8,
+                name: "Sriracha",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1743082296876_500x375.webp",
+                price: "19,90₺"
+            }, 
+            {
+                id: 9,
+                name: "Cheddar Sos",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1743082308006_500x375.webp",
+                price: "19,90₺"
+            }
         ];
 
         // DOM Elements
         const productsContainer = document.getElementById('products-container');
+        const sideProductsContainer = document.getElementById('side-products-container');
+        const drinksContainer = document.getElementById('drinks-container');
+        const saucesContainer = document.getElementById('sauces-container');
         const filterButtons = document.querySelectorAll('.filter-btn');
         const modalOverlay = document.getElementById('modal-overlay');
         const modalClose = document.getElementById('modal-close');
@@ -751,8 +1206,13 @@
         const modalTitle = document.getElementById('modal-title');
         const modalDescription = document.getElementById('modal-description');
         const modalSizes = document.getElementById('modal-sizes');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pizzasContent = document.querySelector('.pizzas-content');
+        const sideProductsContent = document.querySelector('.side-products');
+        const drinksContent = document.querySelector('.drinks-content');
+        const saucesContent = document.querySelector('.sauces-content');
 
-        // Display products
+        // Display pizza products
         function displayProducts(productsArray) {
             productsContainer.innerHTML = '';
             
@@ -760,7 +1220,9 @@
                 const productCard = document.createElement('div');
                 productCard.classList.add('product-card');
                 productCard.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                    </div>
                     <div class="product-info">
                         <h3 class="product-title">${product.name}</h3>
                         <p class="product-description">${product.description}</p>
@@ -783,7 +1245,106 @@
             });
         }
 
-        // Open modal with product details
+        // Display side products
+        function displaySideProducts() {
+            sideProductsContainer.innerHTML = '';
+            
+            sideProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('side-product-card');
+                
+                let priceHtml = '';
+                if (product.hasQuantity) {
+                    priceHtml = `
+                        <div class="product-sizes">
+                            ${product.quantities.map(q => `
+                                <div class="size-option">
+                                    <div>${q.name}</div>
+                                    <span>${q.price}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                } else {
+                    priceHtml = `<div class="single-price">Fiyat: ${product.price}</div>`;
+                }
+                
+                productCard.innerHTML = `
+                    <div class="side-product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="side-product-image">
+                    </div>
+                    <div class="side-product-info">
+                        <h3 class="side-product-title">${product.name}</h3>
+                        <p class="side-product-description">${product.description}</p>
+                        ${priceHtml}
+                    </div>
+                `;
+                
+                productCard.addEventListener('click', () => {
+                    if (product.hasQuantity) {
+                        openSideModalWithQuantity(product);
+                    } else {
+                        openSideModal(product);
+                    }
+                });
+                
+                sideProductsContainer.appendChild(productCard);
+            });
+        }
+
+        // Display drinks
+        function displayDrinks() {
+            drinksContainer.innerHTML = '';
+            
+            drinks.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('side-product-card');
+                productCard.innerHTML = `
+                    <div class="side-product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="side-product-image">
+                    </div>
+                    <div class="side-product-info">
+                        <h3 class="side-product-title">${product.name}</h3>
+                        <p class="side-product-description">${product.description}</p>
+                        <div class="single-price">Fiyat: ${product.price}</div>
+                    </div>
+                `;
+                
+                productCard.addEventListener('click', () => {
+                    openSideModal(product);
+                });
+                
+                drinksContainer.appendChild(productCard);
+            });
+        }
+
+        // Display sauces
+        function displaySauces() {
+            saucesContainer.innerHTML = '';
+            
+            sauces.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('side-product-card');
+                productCard.innerHTML = `
+                    <div class="side-product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="side-product-image">
+                    </div>
+                    <div class="side-product-info">
+                        <h3 class="side-product-title">${product.name}</h3>
+                        <p class="side-product-description">${product.description}</p>
+                        <div class="single-price">Fiyat: ${product.price}</div>
+                    </div>
+                `;
+                
+                productCard.addEventListener('click', () => {
+                    openSideModal(product);
+                });
+                
+                saucesContainer.appendChild(productCard);
+            });
+        }
+
+        // Open modal with pizza details
         function openModal(product) {
             modalImage.src = product.image;
             modalImage.alt = product.name;
@@ -797,6 +1358,48 @@
                 sizeElement.innerHTML = `
                     <div class="size-name">${size.name}</div>
                     <div class="size-price">${size.price}</div>
+                `;
+                modalSizes.appendChild(sizeElement);
+            });
+            
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Open modal with side product details
+        function openSideModal(product) {
+            modalImage.src = product.image;
+            modalImage.alt = product.name;
+            modalTitle.textContent = product.name;
+            modalDescription.textContent = product.description;
+            
+            modalSizes.innerHTML = '';
+            const sizeElement = document.createElement('div');
+            sizeElement.classList.add('modal-size');
+            sizeElement.innerHTML = `
+                <div class="size-name">Fiyat</div>
+                <div class="size-price">${product.price}</div>
+            `;
+            modalSizes.appendChild(sizeElement);
+            
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Open modal with side product details with quantity options
+        function openSideModalWithQuantity(product) {
+            modalImage.src = product.image;
+            modalImage.alt = product.name;
+            modalTitle.textContent = product.name;
+            modalDescription.textContent = product.description;
+            
+            modalSizes.innerHTML = '';
+            product.quantities.forEach(q => {
+                const sizeElement = document.createElement('div');
+                sizeElement.classList.add('modal-size');
+                sizeElement.innerHTML = `
+                    <div class="size-name">${q.name}</div>
+                    <div class="size-price">${q.price}</div>
                 `;
                 modalSizes.appendChild(sizeElement);
             });
@@ -824,6 +1427,37 @@
                 } else {
                     const filteredProducts = products.filter(product => product.category === filter);
                     displayProducts(filteredProducts);
+                }
+            });
+        });
+
+        // Navigation between different sections
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = link.getAttribute('data-target');
+                
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Hide all content sections
+                pizzasContent.style.display = 'none';
+                sideProductsContent.classList.remove('active');
+                drinksContent.classList.remove('active');
+                saucesContent.classList.remove('active');
+                
+                // Show the selected content section
+                if (target === 'pizzas') {
+                    pizzasContent.style.display = 'block';
+                } else if (target === 'sides') {
+                    sideProductsContent.classList.add('active');
+                    displaySideProducts();
+                } else if (target === 'drinks') {
+                    drinksContent.classList.add('active');
+                    displayDrinks();
+                } else if (target === 'sauces') {
+                    saucesContent.classList.add('active');
+                    displaySauces();
                 }
             });
         });
