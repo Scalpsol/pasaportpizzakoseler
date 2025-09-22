@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pasaport Pizza Köseler- Menü</title>
+    <title>Pasaport Pizza Köseler & This Chicken - Menü</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -15,6 +15,7 @@
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
             --border-radius: 12px;
+            --chicken-color: #ff8c00; /* This Chicken için turuncu renk */
         }
 
         * {
@@ -47,6 +48,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logo-container {
@@ -63,6 +65,34 @@
             font-size: 1.8rem;
             font-weight: bold;
             color: var(--primary-color);
+        }
+
+        .brand-switcher {
+            display: flex;
+            background-color: #f0f0f0;
+            border-radius: 30px;
+            padding: 5px;
+            margin: 0 20px;
+        }
+
+        .brand-btn {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .brand-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .brand-btn.chicken-active {
+            background-color: var(--chicken-color);
+            color: white;
         }
 
         nav ul {
@@ -85,6 +115,12 @@
 
         nav ul li a:hover, nav ul li a.active {
             background-color: var(--primary-color);
+            color: white;
+        }
+
+        .chicken-nav ul li a:hover, 
+        .chicken-nav ul li a.active {
+            background-color: var(--chicken-color);
             color: white;
         }
 
@@ -114,6 +150,10 @@
             font-weight: 700;
         }
 
+        .chicken-section .section-title {
+            color: var(--chicken-color);
+        }
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -124,6 +164,10 @@
             height: 4px;
             background-color: var(--primary-color);
             border-radius: 2px;
+        }
+
+        .chicken-section .section-title::after {
+            background-color: var(--chicken-color);
         }
 
         /* Category Filter */
@@ -146,11 +190,22 @@
             transition: var(--transition);
         }
 
+        .chicken-filter {
+            border: 2px solid var(--chicken-color);
+            color: var(--chicken-color);
+        }
+
         .filter-btn:hover, .filter-btn.active {
             background-color: var(--primary-color);
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(236, 28, 36, 0.3);
+        }
+
+        .chicken-filter:hover, .chicken-filter.active {
+            background-color: var(--chicken-color);
+            color: white;
+            box-shadow: 0 4px 8px rgba(255, 140, 0, 0.3);
         }
 
         /* Products Grid */
@@ -207,6 +262,10 @@
             font-weight: 700;
         }
 
+        .chicken-product .product-title {
+            color: var(--chicken-color);
+        }
+
         .product-description {
             color: #666;
             margin-bottom: 1rem;
@@ -237,12 +296,77 @@
             color: var(--primary-color);
         }
 
+        .chicken-product .size-option span {
+            color: var(--chicken-color);
+        }
+
         .single-price {
             text-align: center;
             margin-top: 10px;
             font-weight: bold;
             color: var(--primary-color);
             font-size: 1.1rem;
+        }
+
+        .chicken-product .single-price {
+            color: var(--chicken-color);
+        }
+
+        /* Side Product Styles */
+        .side-product-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .side-product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .side-product-image-container {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+
+        .side-product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .side-product-card:hover .side-product-image {
+            transform: scale(1.05);
+        }
+
+        .side-product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .side-product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .chicken-product .side-product-title {
+            color: var(--chicken-color);
+        }
+
+        .side-product-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
 
         /* Modal Styles */
@@ -339,9 +463,17 @@
             transition: var(--transition);
         }
 
+        .chicken-modal .modal-close {
+            background-color: var(--chicken-color);
+        }
+
         .modal-close:hover {
             transform: rotate(90deg);
             background-color: #d01623;
+        }
+
+        .chicken-modal .modal-close:hover {
+            background-color: #e67e00;
         }
 
         .modal-title {
@@ -349,6 +481,10 @@
             color: var(--primary-color);
             margin-bottom: 1rem;
             font-weight: 700;
+        }
+
+        .chicken-modal .modal-title {
+            color: var(--chicken-color);
         }
 
         .modal-description {
@@ -384,6 +520,10 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
+        .chicken-modal .modal-size:hover {
+            border-color: var(--chicken-color);
+        }
+
         .size-name {
             font-weight: bold;
             margin-bottom: 0.5rem;
@@ -396,65 +536,17 @@
             font-size: 1.3rem;
         }
 
+        .chicken-modal .size-price {
+            color: var(--chicken-color);
+        }
+
         /* Side Products Section */
-        .side-products, .drinks-content, .sauces-content {
+        .side-products, .drinks-content, .sauces-content, .chicken-content {
             display: none;
         }
 
-        .side-products.active, .drinks-content.active, .sauces-content.active {
+        .side-products.active, .drinks-content.active, .sauces-content.active, .chicken-content.active {
             display: block;
-        }
-
-        .side-product-card {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .side-product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .side-product-image-container {
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f5f5f5;
-        }
-
-        .side-product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: var(--transition);
-        }
-
-        .side-product-card:hover .side-product-image {
-            transform: scale(1.05);
-        }
-
-        .side-product-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .side-product-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        .side-product-description {
-            color: #666;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
         }
 
         /* Footer Styles */
@@ -511,6 +603,10 @@
                 margin-bottom: 1rem;
             }
 
+            .brand-switcher {
+                margin: 1rem 0;
+            }
+
             nav ul {
                 margin-top: 1rem;
                 flex-wrap: wrap;
@@ -550,6 +646,16 @@
             .size-option {
                 width: 100%;
             }
+
+            .brand-switcher {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .brand-btn {
+                width: 100%;
+                margin-bottom: 5px;
+            }
         }
     </style>
 </head>
@@ -558,18 +664,41 @@
     <header>
         <div class="header-container">
             <div class="logo-container">
-                <img src="https://www.pasaportpizza.com/assets/theme/media/logo.svg" alt="Köseler Köyü Pasaport Pizza" class="logo">
+                <img src="https://www.pasaportpizza.com/assets/theme/media/logo.svg" alt="Köseler Köyü Pasaport Pizza" class="logo" id="main-logo">
                 <div class="logo-text">Köseler</div>
             </div>
+            
+            <!-- Brand Switcher -->
+            <div class="brand-switcher">
+                <button class="brand-btn active" id="pizza-brand-btn" data-brand="pizza">
+                    Pasaport Pizza
+                </button>
+                <button class="brand-btn" id="chicken-brand-btn" data-brand="chicken">
+                    This Chicken
+                </button>
+            </div>
+            
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
-            <nav>
+            
+            <!-- Pizza Navigation -->
+            <nav class="pizza-nav">
                 <ul>
                     <li><a href="#pizzalar" class="nav-link active" data-target="pizzas">Pizzalar</a></li>
                     <li><a href="#yan-urunler" class="nav-link" data-target="sides">Yan Ürünler</a></li>
                     <li><a href="#icecekler" class="nav-link" data-target="drinks">İçecekler</a></li>
                     <li><a href="#soslar" class="nav-link" data-target="sauces">Soslar</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Chicken Navigation -->
+            <nav class="chicken-nav" style="display: none;">
+                <ul>
+                    <li><a href="#tavuk-menu" class="nav-link active" data-target="chicken-menu">Tavuk Menü</a></li>
+                    <li><a href="#tavuk-yan-urunler" class="nav-link" data-target="chicken-sides">Yan Ürünler</a></li>
+                    <li><a href="#tavuk-icecekler" class="nav-link" data-target="chicken-drinks">İçecekler</a></li>
+                    <li><a href="#tavuk-soslar" class="nav-link" data-target="chicken-sauces">Soslar</a></li>
                 </ul>
             </nav>
         </div>
@@ -624,9 +753,58 @@
         </div>
     </div>
 
+    <!-- This Chicken Content - Menu -->
+    <div class="container chicken-content" id="tavuk-menu">
+        <h2 class="section-title chicken-section">This Chicken Menü</h2>
+        
+        <!-- Category Filter -->
+        <div class="category-filter">
+            <button class="filter-btn chicken-filter active" data-filter="all">Tümü</button>
+            <button class="filter-btn chicken-filter" data-filter="menu">Eko Menüler</button>
+            <button class="filter-btn chicken-filter" data-filter="burger">Burger & Roll Menüler</button>
+            <button class="filter-btn chicken-filter" data-filter="bowl">Kiloluk Çıtır Lezzet</button>
+            <button class="filter-btn chicken-filter" data-filter="cıtır">Çıtır Lezzetler</button>
+        </div>
+        
+        <!-- Products Grid -->
+        <div class="products-grid" id="chicken-products-container">
+            <!-- Chicken products will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- This Chicken Content - Side Products -->
+    <div class="container chicken-content" id="tavuk-yan-urunler">
+        <h2 class="section-title chicken-section">This Chicken Yan Ürünler</h2>
+        
+        <!-- Side Products Grid -->
+        <div class="products-grid" id="chicken-side-products-container">
+            <!-- Chicken side products will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- This Chicken Content - Drinks -->
+    <div class="container chicken-content" id="tavuk-icecekler">
+        <h2 class="section-title chicken-section">This Chicken İçecekler</h2>
+        
+        <!-- Drinks Grid -->
+        <div class="products-grid" id="chicken-drinks-container">
+            <!-- Chicken drinks will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- This Chicken Content - Sauces -->
+    <div class="container chicken-content" id="tavuk-soslar">
+        <h2 class="section-title chicken-section">This Chicken Soslar</h2>
+        
+        <!-- Sauces Grid -->
+        <div class="products-grid" id="chicken-sauces-container">
+            <!-- Chicken sauces will be dynamically inserted here -->
+        </div>
+    </div>
+
     <!-- Product Modal -->
     <div class="modal-overlay" id="modal-overlay">
-        <div class="product-modal">
+        <div class="product-modal" id="product-modal">
             <div class="modal-close" id="modal-close">
                 <i class="fas fa-times"></i>
             </div>
@@ -663,7 +841,7 @@
     </footer>
 
     <script>
-        // Pizza product data
+        // Pizza product data - Küçük boyut eklendi
         const products = [
             {
                 id: 1,
@@ -672,6 +850,7 @@
                 image: "https://www.pasaportpizza.com/images/products/0b2a4680e6d484ab5bf6bd28b5831a70.png",
                 category: "ozel",
                 sizes: [
+                    { name: "Küçük", price: "189,90₺" },
                     { name: "Orta", price: "229,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -683,6 +862,7 @@
                 image: "https://www.pasaportpizza.com/images/products/5fa6a11f7accb1c52e63e0f7b210a600.png",
                 category: "ozel",
                 sizes: [
+                    { name: "Küçük", price: "189,90₺" },
                     { name: "Orta", price: "229,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -694,6 +874,7 @@
                 image: "https://www.pasaportpizza.com/images/products/aedd7977b614aec6e02f2b36d265cc83.png",
                 category: "ozel",
                 sizes: [
+                    { name: "Küçük", price: "189,90₺" },
                     { name: "Orta", price: "229,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -705,6 +886,7 @@
                 image: "https://www.pasaportpizza.com/images/products/d0a3e15acb77a02ea87c243a30480fc0.png",
                 category: "ozel",
                 sizes: [
+                    { name: "Küçük", price: "189,90₺" },
                     { name: "Orta", price: "229,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -716,6 +898,7 @@
                 image: "https://www.pasaportpizza.com/images/products/b9d8f86073f1d130a2de09db2612b4e2.png",
                 category: "ozel",
                 sizes: [
+                    { name: "Küçük", price: "189,90₺" },
                     { name: "Orta", price: "229,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -727,6 +910,7 @@
                 image: "https://www.pasaportpizza.com/images/products/5802fbc581e834ca847ecb444c7da06c.png",
                 category: "klasik",
                 sizes: [
+                    { name: "Küçük", price: "189,90₺" },
                     { name: "Orta", price: "229,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -738,6 +922,7 @@
                 image: "https://www.pasaportpizza.com/images/products/1069408951f414c02fb1f2dcf31a7280.png",
                 category: "klasik",
                 sizes: [
+                    { name: "Küçük", price: "209,90₺" },
                     { name: "Orta", price: "249,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -749,6 +934,7 @@
                 image: "https://www.pasaportpizza.com/images/products/85bab97669e3a429515d7f16f3ce21d8.png",
                 category: "klasik",
                 sizes: [
+                    { name: "Küçük", price: "189,90₺" },
                     { name: "Orta", price: "229,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -760,6 +946,7 @@
                 image: "https://www.pasaportpizza.com/images/products/30a577126ed0614160b9717045d99b70.png",
                 category: "klasik",
                 sizes: [
+                    { name: "Küçük", price: "189,90₺" },
                     { name: "Orta", price: "229,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -771,6 +958,7 @@
                 image: "https://www.pasaportpizza.com/images/products/88f8024ece565c06fa3d06eccb3bd05f.png",
                 category: "klasik",
                 sizes: [
+                    { name: "Küçük", price: "209,90₺" },
                     { name: "Orta", price: "249,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -782,6 +970,7 @@
                 image: "https://www.pasaportpizza.com/images/products/6f268839988c5be570aaff8a4c33ede6.png",
                 category: "klasik",
                 sizes: [
+                    { name: "Küçük", price: "189,90₺" },
                     { name: "Orta", price: "229,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -793,6 +982,7 @@
                 image: "https://www.pasaportpizza.com/images/products/ba9ea58b9fd2575eb667350649705b53.png",
                 category: "klasik",
                 sizes: [
+                    { name: "Küçük", price: "189,90₺" },
                     { name: "Orta", price: "229,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -800,10 +990,11 @@
             {
                 id: 13,
                 name: "CARNAVAL",
-                description: "Özel pizza sosu, pizza peyniri, salam, sosis, küp sucuk, mantar, yeşil biber, mısır, siyah zeytin, domates, susam",
+                description: "Özel pizza sosu, pizza peyniri, salam, sosis, küp sucuk, mantar, yeşil biber, mısır, siyah zeytin, domêtes, susam",
                 image: "https://www.pasaportpizza.com/images/products/3dd4087b33df45a51d91a33cbbc8d830.png",
                 category: "klasik",
                 sizes: [
+                    { name: "Küçük", price: "189,90₺" },
                     { name: "Orta", price: "229,90₺" },
                     { name: "Büyük", price: "329,90₺" }
                 ]
@@ -815,6 +1006,7 @@
                 image: "https://www.pasaportpizza.com/images/products/d745e2866be87ec617b5db414b043f24.png",
                 category: "etli",
                 sizes: [
+                    { name: "Küçük", price: "279,90₺" },
                     { name: "Orta", price: "329,90₺" },
                     { name: "Büyük", price: "499,90₺" }
                 ]
@@ -826,6 +1018,7 @@
                 image: "https://www.pasaportpizza.com/images/products/76f3a5f103077e168e052b6afd753905.png",
                 category: "etli",
                 sizes: [
+                    { name: "Küçük", price: "279,90₺" },
                     { name: "Orta", price: "329,90₺" },
                     { name: "Büyük", price: "499,90₺" }
                 ]
@@ -837,6 +1030,7 @@
                 image: "https://www.pasaportpizza.com/images/products/1019541394e430d965803c49f214c3c6.png",
                 category: "etli",
                 sizes: [
+                    { name: "Küçük", price: "279,90₺" },
                     { name: "Orta", price: "329,90₺" },
                     { name: "Büyük", price: "499,90₺" }
                 ]
@@ -848,6 +1042,7 @@
                 image: "https://www.pasaportpizza.com/images/products/7d034de4934d2799834539e13f9b9c1b.png",
                 category: "etli",
                 sizes: [
+                    { name: "Küçük", price: "329,90₺" },
                     { name: "Orta", price: "379,90₺" },
                     { name: "Büyük", price: "499,90₺" }
                 ]
@@ -859,6 +1054,7 @@
                 image: "https://www.pasaportpizza.com/images/products/55c38f3ed9c0399cadf5d8ad1a7c8d6f.png",
                 category: "etli",
                 sizes: [
+                    { name: "Küçük", price: "279,90₺" },
                     { name: "Orta", price: "329,90₺" },
                     { name: "Büyük", price: "499,90₺" }
                 ]
@@ -870,6 +1066,7 @@
                 image: "https://www.pasaportpizza.com/images/products/74dd9d67060ec1c661dc4ad9dc37ecb5.png",
                 category: "vejeteryan",
                 sizes: [
+                    { name: "Küçük", price: "299,90₺" },
                     { name: "Orta", price: "349,90₺" },
                     { name: "Büyük", price: "599,90₺" }
                 ]
@@ -881,6 +1078,7 @@
                 image: "https://www.pasaportpizza.com/images/products/4ef5a3c1c5bb1fb56781de8029b391a0.png",
                 category: "vejeteryan",
                 sizes: [
+                    { name: "Küçük", price: "299,90₺" },
                     { name: "Orta", price: "349,90₺" },
                     { name: "Büyük", price: "599,90₺" }
                 ]
@@ -892,6 +1090,7 @@
                 image: "https://www.pasaportpizza.com/images/products/6fc00b6986b51204eeeee8c0675f0cc3.png",
                 category: "vejeteryan",
                 sizes: [
+                    { name: "Küçük", price: "299,90₺" },
                     { name: "Orta", price: "349,90₺" },
                     { name: "Büyük", price: "599,90₺" }
                 ]
@@ -903,6 +1102,7 @@
                 image: "https://www.pasaportpizza.com/images/products/0f8374692ca8092883fa07a465d88b94.png",
                 category: "vejeteryan",
                 sizes: [
+                    { name: "Küçük", price: "299,90₺" },
                     { name: "Orta", price: "349,90₺" },
                     { name: "Büyük", price: "599,90₺" }
                 ]
@@ -952,7 +1152,7 @@
                     { name: "12 Adet", price: "129,90₺" }
                 ]
             },
-	    {
+            {
                 id: 5,
                 name: "Çıtır Wings ( Yaprak Kanat )",
                 description: "",
@@ -1024,7 +1224,7 @@
                 hasQuantity: false
             },
             {
-                id: 13,
+                id: 12,
                 name: "Donut",
                 description: "",
                 image: "https://www.pasaportpizza.com/images/products/bd0aef8c09b34fc7cd875a4ed99cf11a.png",
@@ -1032,7 +1232,7 @@
                 hasQuantity: false
             },
             {
-                id: 12,
+                id: 13,
                 name: "Algida Maraş Cup",
                 description: "",
                 image: "https://cdn.getiryemek.com/products/1751353840165_500x375.webp",
@@ -1085,7 +1285,7 @@
                 image: "https://www.pasaportpizza.com/images/products/77aa30a180c2649b54f316cb36ec7c7c.png",
                 price: "84,90₺"
             },
-	    {
+            {
                 id: 7,
                 name: "Ayran Kutu",
                 description: "",
@@ -1175,7 +1375,689 @@
             },
             {
                 id: 4,
-                name: "Ranch Sos",
+                name: "Rranch Sos",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1733903271784_500x375.jpeg",
+                price: "12,90₺"
+            },
+            {
+                id: 5,
+                name: "Acı Sos",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1733903198975_500x375.jpeg",
+                price: "12,90₺"
+            },
+            {
+                id: 6,
+                name: "Sarımsaklı Mayonez",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1733903284709_500x375.jpeg",
+                price: "12,90₺"
+            },
+            {
+                id: 7,
+                name: "Buffalo Sos",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1743082286006_500x375.webp",
+                price: "19,90₺"
+            },
+            {
+                id: 8,
+                name: "Sriracha",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1743082296876_500x375.webp",
+                price: "19,90₺"
+            }, 
+            {
+                id: 9,
+                name: "Cheddar Sos",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1743082308006_500x375.webp",
+                price: "19,90₺"
+            }
+        ];
+
+        // This Chicken product data
+        const chickenProducts = [
+            {
+                id: 101,
+                name: "Double Eco Menü",
+                description: "2 Adet chickburger ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751383230201_500x375.webp",
+                category: "menu",
+                price: "229,90₺"
+            },
+            {
+                id: 103,
+                name: "Triple Eco Menü",
+                description: "3 Adet EkoChickBurger ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751383466542_500x375.webp",
+                category: "menu",
+                price: "299,90₺"
+            },
+            {
+                id: 104,
+                name: "4x4 Eco Menü",
+                description: "2 Adet EcoChickburger, 2 adet EcoHamburger, 2 adet patates kızartması, 20 adet pop up chicken, 8 adet soğan halkası ve içecek (1 L)",
+                image: "https://cdn.getiryemek.com/products/1751383620271_500x375.webp",
+                category: "menu",
+                price: "499,90₺"
+            },
+            {
+                id: 105,
+                name: "Chicken Burger Menü",
+                description: "Chicken burger, patates kızartması ve kutu içecek",
+                image: "https://cdn.getiryemek.com/products/1751360288791_500x375.webp",
+                category: "burger",
+                price: "229,90₺"
+            },
+            {
+                id: 106,
+                name: "Chicken Roll Menü",
+                description: "Chicken roll, patates kızartması ve kutu içecek",
+                image: "https://cdn.getiryemek.com/products/1751361632579_500x375.webp",
+                category: "burger",
+                price: "229,90₺"
+            },
+	    {
+                id: 108,
+                name: "ChickBurger Menü",
+                description: "Chickburger (90 g), patates kızartması ve kutu içecek",
+                image: "https://cdn.getiryemek.com/products/1751361967958_500x375.webp",
+                category: "burger",
+                price: "189,90₺"
+            },
+	    {
+                id: 109,
+                name: "EcoChickBurger Menü",
+                description: "Eco chickburger (65 g), patates kızartması ve kutu içecek",
+                image: "https://cdn.getiryemek.com/products/1751362181867_500x375.webp",
+                category: "burger",
+                price: "169,90₺"
+            },
+	    {
+                id: 110,
+                name: "Hamburger Menü",
+                description: "Hamburger (90 g), patates kızartması ve kutu içecek",
+                image: "https://cdn.getiryemek.com/products/1751362301198_500x375.webp",
+                category: "burger",
+                price: "269,90₺"
+            },
+	    {
+                id: 111,
+                name: "EcoHamburger Menü",
+                description: "EcoHamburger (45 g), patates kızartması ve kutu içecek",
+                image: "https://cdn.getiryemek.com/products/1751362884943_500x375.webp",
+                category: "burger",
+                price: "199,90₺"
+            },
+	    {
+                id: 112,
+                name: "Mix Roll Menü",
+                description: "Chicken roll, patates kızartması, 4 adet nugget, 4 adet soğan halkası ve kutu içecek",
+                image: "https://cdn.getiryemek.com/products/1751362301198_500x375.webp",
+                category: "burger",
+                price: "249,90₺"
+            },
+	    {
+                id: 113,
+                name: "Pop Up Roll Menü",
+                description: "Chicken roll, patates kızartması, 10 adet pop up chicken ve kutu içecek",
+                image: "https://cdn.getiryemek.com/products/1751363234664_500x375.webp",
+                category: "burger",
+                price: "249,90₺"
+            },
+	    {
+                id: 114,
+                name: "Score Menü",
+                description: "Chicken burger, çıtır tenders, 2 adet fingers, 4 adet soğan halkası, patates kızartması ve kutu içecek",
+                image: "https://cdn.getiryemek.com/products/1751363519602_500x375.webp",
+                category: "burger",
+                price: "269,90₺"
+            },
+	    {
+                id: 115,
+                name: "Gamer Menü",
+                description: "Chicken burger, çıtır tenders, 2 adet fingers, 10 adet pop up chicken, 4 adet soğan halkası, patates kızartması ve içecek (1 L)",
+                image: "https://cdn.getiryemek.com/products/1751364774013_500x375.webp",
+                category: "burger",
+                price: "299,90₺"
+            },
+	    {
+                id: 116,
+                name: "Kanka Menü",
+                description: "2 adet chicken burger, 2 adet çıtır tenders, 4 adet fingers, 20 adet pop up chicken, 2 adet patates kızartması ve içecek (1 L) ile",
+                image: "https://cdn.getiryemek.com/products/1751365152438_500x375.webp",
+                category: "burger",
+                price: "449,90₺"
+            },
+	    {
+                id: 117,
+                name: "Doy Doy Menü",
+                description: "2 Adet chicken burger, 4 adet fingers, 10 adet pop up chicken, 6 adet soğan halkası, 2 adet patates kızartması ve içecek (1 L)",
+                image: "https://cdn.getiryemek.com/products/1751381578319_500x375.webp",
+                category: "burger",
+                price: "449,90₺"
+            },
+            {
+                id: 118,
+                name: "Maxi Chicken Burger Menü",
+                description: "Chicken burger, 2 adet çıtır tenders, patates kızartması ve kutu içecek",
+                image: "https://cdn.getiryemek.com/products/1751381381815_500x375.webp",
+                category: "burger",
+                price: "269,90₺"
+            },
+	    {
+                id: 119,
+                name: "Triple Chicken Roll Menü",
+                description: "3 Adet chicken roll, 15 adet pop up chicken, 6 adet nugget, 6 adet soğan halkası ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751357793765_500x375.webp",
+                category: "burger",
+                price: "449,90₺"
+            },
+	    {
+                id: 120,
+                name: "Triple Chicken Burger Menü",
+                description: "3 Adet chicken burger, 15 adet pop up chicken, 6 adet nugget, 6 adet soğan halkası ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751384349026_500x375.webp",
+                category: "burger",
+                price: "449,90₺"
+            },
+	    {
+                id: 121,
+                name: "Triple ChickBurger Menü",
+                description: "3 Adet ChickBurger (90 g), 15 adet pop up chicken, 6 adet nugget, 6 adet soğan halkası ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751440681002_500x375.webp",
+                category: "burger",
+                price: "399,90₺"
+            },
+	    {
+                id: 122,
+                name: "Combo EcoChick Pop Up Menü",
+                description: "4 Adet EcoChickburger (65 g), 40 adet pop up chicken ve 2 adet patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751441318812_500x375.webp",
+                category: "burger",
+                price: "399,90₺"
+            },
+	    {
+                id: 123,
+                name: "Combo Chicken Pop-Up Menü",
+                description: "4 Adet chicken burger, 40 adet pop up chicken ve 2 adet patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751441868688_500x375.webp",
+                category: "burger",
+                price: "599,90₺"
+            },
+	    {
+                id: 124,
+                name: "Chicken Party Menü",
+                description: "4 Adet Chickburger (90 g), 4 adet EcoChickburger (65 g) ve 2 adet patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751442985062_500x375.webp",
+                category: "burger",
+                price: "599,90₺"
+            },
+	    {
+                id: 125,
+                name: "S'Wings Menü",
+                description: "2 Adet yaprak kanat, 2 adet kök kanat ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751370133911_500x375.webp",
+                category: "cıtır",
+                price: "249,90₺"
+            },
+	    {
+                id: 126,
+                name: "S'Tenders Menü",
+                description: "2 Adet çıtır tenders, 2 adet küp tenders, 2 adet fingers ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751370879508_500x375.webp",
+                category: "cıtır",
+                price: "229,90₺"
+            },
+	    {
+                id: 127,
+                name: "S'Pop Up Çıtır Menü",
+                description: "4 Adet küp tenders, 20 adet pop up chicken ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751372139072_500x375.webp",
+                category: "cıtır",
+                price: "229,90₺"
+            },
+	    {
+                id: 128,
+                name: "M'Wings Menü",
+                description: "4 Adet yaprak kanat, 4 adet kök kanat ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751373321069_500x375.webp",
+                category: "cıtır",
+                price: "349,90₺"
+            },
+	    {
+                id: 129,
+                name: "M'Tenders Menü",
+                description: "4 Adet çıtır tenders, 4 adet küp tenders, 4 adet fingers ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751373417358_500x375.webp",
+                category: "cıtır",
+                price: "299,90₺"
+            },
+	    {
+                id: 130,
+                name: "M'Pop Up Çıtır Menü",
+                description: "2 Adet çıtır tenders, 4 adet küp tenders, 30 adet pop up chicken ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751375648884_500x375.webp",
+                category: "cıtır",
+                price: "299,90₺"
+            },
+	    {
+                id: 131,
+                name: "M'Çıtır Mix Menü",
+                description: "2 Adet yaprak kanat, 2 adet kök kanat, 2 adet çıtır tenders, 2 adet küp tenders, 10 adet pop up chicken, 2 adet fingers, 2 adet nugget, 2 adet soğan halkası ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751377021373_500x375.webp",
+                category: "cıtır",
+                price: "349,90₺"
+            },
+	    {
+                id: 132,
+                name: "L'Wings Menü",
+                description: "6 Adet yaprak kanat, 6 adet kök kanat ve 2 adet patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751367105478_500x375.webp",
+                category: "cıtır",
+                price: "499,90₺"
+            },
+	    {
+                id: 133,
+                name: "L'Tenders Menü",
+                description: "6 Adet çıtır tenders, 6 adet küp tenders, 6 adet fingers ve 2 adet patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751367323950_500x375.webp",
+                category: "cıtır",
+                price: "449,90₺"
+            },
+	    {
+                id: 134,
+                name: "XL'Wings Menü",
+                description: "8 Adet yaprak kanat, 8 adet kök kanat ve 2 adet patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751367970944_500x375.webp",
+                category: "cıtır",
+                price: "649,90₺"
+            },
+	    {
+                id: 135,
+                name: "XL'Tenders Menü",
+                description: "8 Adet çıtır tenders, 8 adet küp tenders, 8 adet fingers ve 2 adet patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751368633657_500x375.webp",
+                category: "cıtır",
+                price: "549,90₺"
+            },
+	    {
+                id: 136,
+                name: "XL'Çıtır Mix Menü",
+                description: "4 Adet yaprak kanat, 4 adet kök kanat, 4 adet çıtır tenders, 4 adet küp tenders, 20 adet pop up chicken, 4 adet fingers, 4 adet nugget, 4 adet soğan halkası ve 2 adet patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751369755275_500x375.webp",
+                category: "cıtır",
+                price: "699,90₺"
+            },
+	    {
+                id: 137,
+                name: "EcoChick Menü",
+                description: "3 Adet fingers, 3 adet nugget, 3 adet soğan halkası, 10 adet pop up chicken ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751382209447_500x375.webp",
+                category: "menu",
+                price: "199,90₺"
+            },
+	    {
+                id: 138,
+                name: "EcoPop Menü",
+                description: "40 Adet pop up chicken ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751382574633_500x375.webp",
+                category: "menu",
+                price: "549,90₺"
+            },
+	    {
+                id: 139,
+                name: "MiniChick Menü",
+                description: "2 Adet çıtır tenders, 2 adet küp tenders, 10 adet pop up chicken ve patates kızartması",
+                image: "https://cdn.getiryemek.com/products/1751382709793_500x375.webp",
+                category: "menu",
+                price: "549,90₺"
+            },
+	    {
+                id: 140,
+                name: "Çıtır Bowl",
+                description: "Patates kızartması (300 g), 2 adet çıtır tenders ve tercihe göre bowl üzeri 3 adet sos ile",
+                image: "https://cdn.getiryemek.com/products/1751438480560_500x375.webp",
+                category: "menu",
+                price: "199,90₺"
+            },
+	    {
+                id: 141,
+                name: "Mix Bowl",
+                description: "Patates kızartması (300 g), 10 adet pop up chicken, 2 adet fingers, 2 adet nugget ve tercih edeceğiniz 3 adet bowl üzeri sos ile",
+                image: "https://cdn.getiryemek.com/products/1751438690303_500x375.webp",
+                category: "menu",
+                price: "199,90₺"
+            },
+	    {
+                id: 142,
+                name: "Çıtır Wings (500 g)",
+                description: "Çıtır Wings (Kök ve Yaprak Kanat) (Belirtilen gramajlarda, ürünün pişmeden önceki donuk hali baz alınmıştır.)",
+                image: "https://cdn.getiryemek.com/products/1751379484987_500x375.webp",
+                category: "bowl",
+                price: "349,90₺"
+            },
+	    {
+                id: 143,
+                name: "Çıtır Tenders (500 g)",
+                description: "Çıtır Tenders (Belirtilen gramajlarda, ürünün pişmeden önceki donuk hali baz alınmıştır.)",
+                image: "https://cdn.getiryemek.com/products/1751380187521_500x375.webp",
+                category: "bowl",
+                price: "299,90₺"
+            },
+	    {
+                id: 145,
+                name: "Çıtır Mix (500 g)",
+                description: "Çıtır Wings (Kök ve Yaprak Kanat), Çıtır Tenders, Fingers (Belirtilen gramajlarda, ürünün pişmeden önceki donuk hali baz alınmıştır.)",
+                image: "https://cdn.getiryemek.com/products/1751380343783_500x375.webp",
+                category: "bowl",
+                price: "299,90₺"
+            },
+	    {
+                id: 146,
+                name: "Çıtır Wings (1 Kg)",
+                description: "Çıtır Wings (Kök ve Yaprak Kanat) (Belirtilen gramajlarda, ürünün pişmeden önceki donuk hali baz alınmıştır.)",
+                image: "https://cdn.getiryemek.com/products/1751379484987_500x375.webp",
+                category: "bowl",
+                price: "649,90₺"
+            },
+	    {
+                id: 147,
+                name: "Çıtır Tenders (1 Kg)",
+                description: "Çıtır Tenders (Belirtilen gramajlarda, ürünün pişmeden önceki donuk hali baz alınmıştır.)",
+                image: "https://cdn.getiryemek.com/products/1751380187521_500x375.webp",
+                category: "bowl",
+                price: "549,90₺"
+            },
+	    {
+                id: 148,
+                name: "Çıtır Mix (1 Kg)",
+                description: "Çıtır Wings (Kök ve Yaprak Kanat), Çıtır Tenders, Fingers (Belirtilen gramajlarda, ürünün pişmeden önceki donuk hali baz alınmıştır.)",
+                image: "https://cdn.getiryemek.com/products/1751380343783_500x375.webp",
+                category: "bowl",
+                price: "549,90₺"
+            },
+            {
+                id: 107,
+                name: "Çocuk Menü",
+                description: "EcoChickBurger (65 g), patates kızartması, donut ve cappy (250 ml) ile",
+                image: "https://cdn.getiryemek.com/products/1751366193260_500x375.webp",
+                category: "burger",
+                price: "199,90₺"
+            }
+        ];
+
+        // This Chicken için yan ürünler - YENİ EKLENDİ
+        const chickenSideProducts = [
+            {
+                id: 201,
+                name: "Patates Kızartması",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/8193de8515c2281fab680102a6e1b900.png",
+                price: "99.90₺",
+                hasQuantity: false
+            },
+            {
+                id: 202,
+                name: "Pop-Up Chicken",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751355044708_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "10 Adet", price: "94,90₺" },
+                    { name: "20 Adet", price: "129,90₺" }
+                ]
+            },
+            {
+                id: 203,
+                name: "Çıtır Finger",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751356699803_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "3 Adet", price: "99,90₺" },
+                    { name: "6 Adet", price: "149,90₺" }
+                ]
+            },
+            {
+                id: 204,
+                name: "Soğan Halkası",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751354960514_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "6 Adet", price: "79,90₺" },
+                    { name: "12 Adet", price: "129,90₺" }
+                ]
+            },
+            {
+                id: 205,
+                name: "Çıtır Wings ( Yaprak Kanat )",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751356312021_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "3 Adet", price: "169,90₺" },
+                    { name: "6 Adet", price: "269,90₺" }
+                ]
+            },
+            {
+                id: 206,
+                name: "Çıtır Wings ( Kök Kanat )",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751356596063_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "3 Adet", price: "199,90₺" },
+                    { name: "6 Adet", price: "299,90₺" }
+                ]
+            },
+            {
+                id: 207,
+                name: "Elma Dilim Patates",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751354896008_500x375.webp",
+                price: "99,90₺",
+                hasQuantity: false
+            },
+            {
+                id: 208,
+                name: "Küp Tenders",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751356082295_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "6 Adet", price: "129,90₺" },
+                    { name: "12 Adet", price: "199,90₺" }
+                ]
+            },     
+            {
+                id: 209,
+                name: "Chicken Tenders",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751355478046_500x375.webp",
+                hasQuantity: true,
+                quantities: [
+                    { name: "3 Adet", price: "129,90₺" },
+                    { name: "6 Adet", price: "199,90₺" }
+                ]
+            },
+            {
+                id: 210,
+                name: "Nugget",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/4026683fe8ae154767b454f1395b2c50.png",
+                hasQuantity: true,
+                quantities: [
+                    { name: "6 Adet", price: "104,90₺" },
+                    { name: "12 Adet", price: "134,90₺" }
+                ]
+            },
+            {
+                id: 211,
+                name: "Sufle",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/9f3a59a05414116d3987d7dd0da59a88.png",
+                price: "119,90₺",
+                hasQuantity: false
+            },
+            {
+                id: 212,
+                name: "Donut",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/bd0aef8c09b34fc7cd875a4ed99cf11a.png",
+                price: "124,90₺",
+                hasQuantity: false
+            },
+            {
+                id: 213,
+                name: "Algida Maraş Cup",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751353840165_500x375.webp",
+                price: "89,90₺",
+                hasQuantity: false
+            }
+        ];
+
+
+        // This Chicken için içecekler - YENİ EKLENDİ
+        const chickenDrinks = [
+            {
+                id: 1,
+                name: "Coca Cola Kutu",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/74548ea381865e14e451603cd981a051.png",
+                price: "84,90₺"
+            },
+            {
+                id: 2,
+                name: "Fanta Kutu",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/7f26295a44ba3bdad290d832b3369797.png",
+                price: "84,90₺"
+            },
+            {
+                id: 3,
+                name: "Sprite Kutu",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/f3ae6a7d2efc3bf64ba0855b19eec51b.png",
+                price: "84,90₺"
+            },
+            {
+                id: 4,
+                name: "Coca Cola Kutu ( Şekersiz )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/d6d7f9402451f1441a384af560865946.png",
+                price: "84,90₺"
+            },
+            {
+                id: 5,
+                name: "Su ( 0,5 LT )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/82e91b8498c0dc8c8fb3adee50aea92e.png",
+                price: "29,90₺"
+            },
+            {
+                id: 6,
+                name: "Cappy Kutu ( 250 Ml )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/77aa30a180c2649b54f316cb36ec7c7c.png",
+                price: "84,90₺"
+            },
+            {
+                id: 7,
+                name: "Ayran Kutu",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/c1b3c24dbf65cd039f5a8c064c668d41.png",
+                price: "69,90₺"
+            },
+            {
+                id: 8,
+                name: "Fuse Tea Kutu",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/1cb2220e0d4d393649a5734d9a4ee112.png",
+                price: "84,90₺"
+            },
+            {
+                id: 9,
+                name: "Soda",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/8316bdc92ccece0eb3f4eb6db5dfdb6f.png",
+                price: "34,90₺"
+            },
+            {
+                id: 10,
+                name: "Coca Cola ( 1 LT )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/7ee062e88fc64005bac1fc8959b05958.png",
+                price: "94,90₺"
+            },
+            {
+                id: 11,
+                name: "Coca Cola Şekersiz ( 1 LT )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/162b3e53ba284efea15f2cff859a1c47.png",
+                price: "94,90₺"
+            },
+            {
+                id: 12,
+                name: "Sprite ( 1 LT )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/f9fb2c1e816fb946bdffed634cd71314.png",
+                price: "94,90₺"
+            },
+            {
+                id: 13,
+                name: "Fanta ( 1 LT )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/4d7d4b90b82d30681b82bada664e4887.png",
+                price: "94,90₺"
+            },
+            {
+                id: 14,
+                name: "Fuse Tea ( 1 LT )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/015a9247f649bb25dd5a16c5a633aabe.png",
+                price: "94,90₺"
+            },
+            {
+                id: 15,
+                name: "Ayran ( 1 LT )",
+                description: "",
+                image: "https://www.pasaportpizza.com/images/products/eb1f960fdae5ecafb4ee0d3a4e0f473b.png",
+                price: "89,90₺"
+            }     
+        ];
+
+
+        // This Chicken için soslar - YENİ EKLENDİ
+        const chickenSauces = [
+            {
+                id: 1,
+                name: "Ekstra Ketçap",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1733903244399_500x375.jpeg",
+                price: "3,90₺"
+            },
+            {
+                id: 2,
+                name: "Ekstra Mayonez",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1751353446019_500x375.webp",
+                price: "3,90₺"
+            },
+            {
+                id: 3,
+                name: "Barbekü Sos",
+                description: "",
+                image: "https://cdn.getiryemek.com/products/1733903213957_500x375.jpeg",
+                price: "12,90₺"
+            },
+            {
+                id: 4,
+                name: "Rranch Sos",
                 description: "",
                 image: "https://cdn.getiryemek.com/products/1733903271784_500x375.jpeg",
                 price: "12,90₺"
@@ -1222,7 +2104,12 @@
         const sideProductsContainer = document.getElementById('side-products-container');
         const drinksContainer = document.getElementById('drinks-container');
         const saucesContainer = document.getElementById('sauces-container');
+        const chickenProductsContainer = document.getElementById('chicken-products-container');
+        const chickenSideProductsContainer = document.getElementById('chicken-side-products-container');
+        const chickenDrinksContainer = document.getElementById('chicken-drinks-container');
+        const chickenSaucesContainer = document.getElementById('chicken-sauces-container');
         const filterButtons = document.querySelectorAll('.filter-btn');
+        const chickenFilterButtons = document.querySelectorAll('.chicken-filter');
         const modalOverlay = document.getElementById('modal-overlay');
         const modalClose = document.getElementById('modal-close');
         const modalImage = document.getElementById('modal-image');
@@ -1230,10 +2117,65 @@
         const modalDescription = document.getElementById('modal-description');
         const modalSizes = document.getElementById('modal-sizes');
         const navLinks = document.querySelectorAll('.nav-link');
+        const pizzaNav = document.querySelector('.pizza-nav');
+        const chickenNav = document.querySelector('.chicken-nav');
         const pizzasContent = document.querySelector('.pizzas-content');
         const sideProductsContent = document.querySelector('.side-products');
         const drinksContent = document.querySelector('.drinks-content');
         const saucesContent = document.querySelector('.sauces-content');
+        const chickenContents = document.querySelectorAll('.chicken-content');
+        const pizzaBrandBtn = document.getElementById('pizza-brand-btn');
+        const chickenBrandBtn = document.getElementById('chicken-brand-btn');
+        const mainLogo = document.getElementById('main-logo');
+        const productModal = document.getElementById('product-modal');
+
+        // Marka değiştirme fonksiyonu
+        function switchBrand(brand) {
+            if (brand === 'pizza') {
+                pizzaBrandBtn.classList.add('active');
+                chickenBrandBtn.classList.remove('active');
+                chickenBrandBtn.classList.remove('chicken-active');
+                
+                pizzaNav.style.display = 'block';
+                chickenNav.style.display = 'none';
+                
+                // Tüm içerikleri gizle
+                pizzasContent.style.display = 'none';
+                sideProductsContent.style.display = 'none';
+                drinksContent.style.display = 'none';
+                saucesContent.style.display = 'none';
+                chickenContents.forEach(content => content.style.display = 'none');
+                
+                // Sadece pizza içeriğini göster
+                pizzasContent.style.display = 'block';
+                
+                // Logoyu değiştir
+                mainLogo.src = 'https://www.pasaportpizza.com/assets/theme/media/logo.svg';
+                document.querySelector('.logo-text').textContent = 'Köseler';
+                
+            } else if (brand === 'chicken') {
+                pizzaBrandBtn.classList.remove('active');
+                chickenBrandBtn.classList.add('active');
+                chickenBrandBtn.classList.add('chicken-active');
+                
+                pizzaNav.style.display = 'none';
+                chickenNav.style.display = 'block';
+                
+                // Tüm içerikleri gizle
+                pizzasContent.style.display = 'none';
+                sideProductsContent.style.display = 'none';
+                drinksContent.style.display = 'none';
+                saucesContent.style.display = 'none';
+                chickenContents.forEach(content => content.style.display = 'none');
+                
+                // Sadece chicken menü içeriğini göster
+                document.getElementById('tavuk-menu').style.display = 'block';
+                
+                // Logoyu değiştir
+                mainLogo.src = 'https://www.thischicken.com/img/logo-this-chicken-header.png';
+                document.querySelector('.logo-text').textContent = 'This Chicken';
+            }
+        }
 
         // Display pizza products
         function displayProducts(productsArray) {
@@ -1315,6 +2257,53 @@
             });
         }
 
+        // Display This Chicken side products
+        function displayChickenSideProducts() {
+            chickenSideProductsContainer.innerHTML = '';
+            
+            chickenSideProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('side-product-card', 'chicken-product');
+                
+                let priceHtml = '';
+                if (product.hasQuantity) {
+                    priceHtml = `
+                        <div class="product-sizes">
+                            ${product.quantities.map(q => `
+                                <div class="size-option">
+                                    <div>${q.name}</div>
+                                    <span>${q.price}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                } else {
+                    priceHtml = `<div class="single-price">Fiyat: ${product.price}</div>`;
+                }
+                
+                productCard.innerHTML = `
+                    <div class="side-product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="side-product-image">
+                    </div>
+                    <div class="side-product-info">
+                        <h3 class="side-product-title">${product.name}</h3>
+                        <p class="side-product-description">${product.description}</p>
+                        ${priceHtml}
+                    </div>
+                `;
+                
+                productCard.addEventListener('click', () => {
+                    if (product.hasQuantity) {
+                        openChickenSideModalWithQuantity(product);
+                    } else {
+                        openChickenSideModal(product);
+                    }
+                });
+                
+                chickenSideProductsContainer.appendChild(productCard);
+            });
+        }
+
         // Display drinks
         function displayDrinks() {
             drinksContainer.innerHTML = '';
@@ -1341,6 +2330,32 @@
             });
         }
 
+        // Display This Chicken drinks
+        function displayChickenDrinks() {
+            chickenDrinksContainer.innerHTML = '';
+            
+            chickenDrinks.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('side-product-card', 'chicken-product');
+                productCard.innerHTML = `
+                    <div class="side-product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="side-product-image">
+                    </div>
+                    <div class="side-product-info">
+                        <h3 class="side-product-title">${product.name}</h3>
+                        <p class="side-product-description">${product.description}</p>
+                        <div class="single-price">Fiyat: ${product.price}</div>
+                    </div>
+                `;
+                
+                productCard.addEventListener('click', () => {
+                    openChickenSideModal(product);
+                });
+                
+                chickenDrinksContainer.appendChild(productCard);
+            });
+        }
+
         // Display sauces
         function displaySauces() {
             saucesContainer.innerHTML = '';
@@ -1364,6 +2379,58 @@
                 });
                 
                 saucesContainer.appendChild(productCard);
+            });
+        }
+
+        // Display This Chicken sauces
+        function displayChickenSauces() {
+            chickenSaucesContainer.innerHTML = '';
+            
+            chickenSauces.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('side-product-card', 'chicken-product');
+                productCard.innerHTML = `
+                    <div class="side-product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="side-product-image">
+                    </div>
+                    <div class="side-product-info">
+                        <h3 class="side-product-title">${product.name}</h3>
+                        <p class="side-product-description">${product.description}</p>
+                        <div class="single-price">Fiyat: ${product.price}</div>
+                    </div>
+                `;
+                
+                productCard.addEventListener('click', () => {
+                    openChickenSideModal(product);
+                });
+                
+                chickenSaucesContainer.appendChild(productCard);
+            });
+        }
+
+        // Display chicken products
+        function displayChickenProducts(productsArray) {
+            chickenProductsContainer.innerHTML = '';
+            
+            productsArray.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('side-product-card', 'chicken-product');
+                productCard.innerHTML = `
+                    <div class="side-product-image-container">
+                        <img src="${product.image}" alt="${product.name}" class="side-product-image">
+                    </div>
+                    <div class="side-product-info">
+                        <h3 class="side-product-title">${product.name}</h3>
+                        <p class="side-product-description">${product.description}</p>
+                        <div class="single-price">Fiyat: ${product.price}</div>
+                    </div>
+                `;
+                
+                productCard.addEventListener('click', () => {
+                    openChickenModal(product);
+                });
+                
+                chickenProductsContainer.appendChild(productCard);
             });
         }
 
@@ -1431,10 +2498,84 @@
             document.body.style.overflow = 'hidden';
         }
 
+        // Open modal with chicken product details
+        function openChickenModal(product) {
+            modalImage.src = product.image;
+            modalImage.alt = product.name;
+            modalTitle.textContent = product.name;
+            modalDescription.textContent = product.description;
+            
+            modalSizes.innerHTML = '';
+            const sizeElement = document.createElement('div');
+            sizeElement.classList.add('modal-size');
+            sizeElement.innerHTML = `
+                <div class="size-name">Fiyat</div>
+                <div class="size-price">${product.price}</div>
+            `;
+            modalSizes.appendChild(sizeElement);
+            
+            // Add chicken class to modal for styling
+            productModal.classList.add('chicken-modal');
+            
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Open modal with This Chicken side product details
+        function openChickenSideModal(product) {
+            modalImage.src = product.image;
+            modalImage.alt = product.name;
+            modalTitle.textContent = product.name;
+            modalDescription.textContent = product.description;
+            
+            modalSizes.innerHTML = '';
+            const sizeElement = document.createElement('div');
+            sizeElement.classList.add('modal-size');
+            sizeElement.innerHTML = `
+                <div class="size-name">Fiyat</div>
+                <div class="size-price">${product.price}</div>
+            `;
+            modalSizes.appendChild(sizeElement);
+            
+            // Add chicken class to modal for styling
+            productModal.classList.add('chicken-modal');
+            
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Open modal with This Chicken side product details with quantity options
+        function openChickenSideModalWithQuantity(product) {
+            modalImage.src = product.image;
+            modalImage.alt = product.name;
+            modalTitle.textContent = product.name;
+            modalDescription.textContent = product.description;
+            
+            modalSizes.innerHTML = '';
+            product.quantities.forEach(q => {
+                const sizeElement = document.createElement('div');
+                sizeElement.classList.add('modal-size');
+                sizeElement.innerHTML = `
+                    <div class="size-name">${q.name}</div>
+                    <div class="size-price">${q.price}</div>
+                `;
+                modalSizes.appendChild(sizeElement);
+            });
+            
+            // Add chicken class to modal for styling
+            productModal.classList.add('chicken-modal');
+            
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
         // Close modal
         function closeModal() {
             modalOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
+            
+            // Remove chicken class from modal
+            productModal.classList.remove('chicken-modal');
         }
 
         // Filter products by category
@@ -1454,6 +2595,23 @@
             });
         });
 
+        // Filter chicken products by category
+        chickenFilterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                
+                chickenFilterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                if (filter === 'all') {
+                    displayChickenProducts(chickenProducts);
+                } else {
+                    const filteredProducts = chickenProducts.filter(product => product.category === filter);
+                    displayChickenProducts(filteredProducts);
+                }
+            });
+        });
+
         // Navigation between different sections
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -1465,22 +2623,35 @@
                 
                 // Hide all content sections
                 pizzasContent.style.display = 'none';
-                sideProductsContent.classList.remove('active');
-                drinksContent.classList.remove('active');
-                saucesContent.classList.remove('active');
+                sideProductsContent.style.display = 'none';
+                drinksContent.style.display = 'none';
+                saucesContent.style.display = 'none';
+                chickenContents.forEach(content => content.style.display = 'none');
                 
                 // Show the selected content section
                 if (target === 'pizzas') {
                     pizzasContent.style.display = 'block';
                 } else if (target === 'sides') {
-                    sideProductsContent.classList.add('active');
+                    sideProductsContent.style.display = 'block';
                     displaySideProducts();
                 } else if (target === 'drinks') {
-                    drinksContent.classList.add('active');
+                    drinksContent.style.display = 'block';
                     displayDrinks();
                 } else if (target === 'sauces') {
-                    saucesContent.classList.add('active');
+                    saucesContent.style.display = 'block';
                     displaySauces();
+                } else if (target === 'chicken-menu') {
+                    document.getElementById('tavuk-menu').style.display = 'block';
+                    displayChickenProducts(chickenProducts);
+                } else if (target === 'chicken-sides') {
+                    document.getElementById('tavuk-yan-urunler').style.display = 'block';
+                    displayChickenSideProducts();
+                } else if (target === 'chicken-drinks') {
+                    document.getElementById('tavuk-icecekler').style.display = 'block';
+                    displayChickenDrinks();
+                } else if (target === 'chicken-sauces') {
+                    document.getElementById('tavuk-soslar').style.display = 'block';
+                    displayChickenSauces();
                 }
             });
         });
@@ -1493,9 +2664,14 @@
             }
         });
 
+        // Marka değiştirme butonlarına event listener ekle
+        pizzaBrandBtn.addEventListener('click', () => switchBrand('pizza'));
+        chickenBrandBtn.addEventListener('click', () => switchBrand('chicken'));
+
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
             displayProducts(products);
+            displayChickenProducts(chickenProducts);
         });
     </script>
 </body>
